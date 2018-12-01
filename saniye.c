@@ -17,28 +17,18 @@ void delay(int number_of_seconds);
 
 int main(int argc, char* argv[])
 {
+    time_t seconds;
 
-    time_t secondsFirst, secondsSecond;
-    secondsFirst = time(NULL);
+    while(1)
+    {
 
-    long secondOne, secondTwo;
-    secondOne = findSeconds(secondsFirst);
+        seconds = time(NULL);
+        seconds = findSeconds(seconds);
+        printf("%ld",seconds);
+        printf("\b\b");
 
-    printf("%ld ", secondOne);
-
-    delay(3);
-
-
-    secondsSecond = time(NULL);
-
-    secondTwo = findSeconds(secondsSecond);
-
-    printf("%ld", secondTwo);
-
-
-
-
-
+        delay(1);
+    }
 
     return 0;
 }
@@ -66,4 +56,3 @@ long findSeconds(int n)
     return n;
 
 }
-

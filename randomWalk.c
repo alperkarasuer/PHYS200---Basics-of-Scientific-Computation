@@ -6,8 +6,11 @@
 #include <complex.h>
 #include <math.h>
 
+#ifndef M_PI
+    #define M_PI 3.14159265358979323846
+#endif
 
-int generateRandomNumber(int howMany);
+int generateRandomNumber();
 
 
 int main()
@@ -18,7 +21,7 @@ int main()
     long stepSize;
     int i;
     double endReal = 0, endImag = 0;
-
+    double randomNumber;
 
     printf("Enter step count for particle: ");
     scanf("%ld",&stepNumber);
@@ -30,8 +33,9 @@ int main()
 
     for(i = 0; i < stepNumber; i++)
     {
-
-        stepsTaken[i] = generateRandomNumber(stepSize) + generateRandomNumber(stepSize)*I;
+        
+        randomNumber = generateRandomNumber();
+        stepsTaken[i] = cos(randomNumber*M_PI/180) + sin(randomNumber*M_PI/180)*I;
 
     }
 
@@ -46,8 +50,8 @@ int main()
     }
 
 
-    printf("%.2lf + %.2lfi",endReal,endImag);
-
+    printf("%.2lf + %.2lfi\n",endReal,endImag);
+    printf("Distance from origin is: %lf "),sqrt(endReal*endReal + endImag*endImag);
 
 
     return 0;
@@ -57,9 +61,9 @@ int main()
 
 
 
-int generateRandomNumber(int howMany)
+int generateRandomNumber()
 {
     uint32_t maxSize = howMany;
-    uint32_t myInt = randombytes_uniform(maxSize);
+    uint32_t myInt = randombytes_uniform(360);
     return myInt;
 }

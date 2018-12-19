@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <stdint.h>
-
+#include <math.h>
 int generateRandomNumber();
 
 
@@ -54,7 +54,7 @@ int main()
     }
 
 
-
+	fprintf(fp,"Distance to origin: %lf",sqrt(x*x + y*y));
 
 	fclose(fp);
 

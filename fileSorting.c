@@ -2,51 +2,63 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+// function prototypes
 void sort(int *arr[], int size);
 
 int main()
 {
+	//variable definitions
 	int lineCounter = 0;
-	int j = 0;
-	FILE *fp;
-	fp = fopen("input.txt","r");
+	int i = 0;
+	FILE* in;
+	FILE* out;
+	in = fopen("input.txt","r");
 	int temporary;
 	int* nullPointer = &temporary;
 
-
-	while (!feof(fp))
+	//counting lines in file
+	while (!feof(in))
 	{
-		fscanf (fp,"%d",nullPointer);
+		fscanf (in,"%d",nullPointer);
 		lineCounter++;
 	}
 
 	lineCounter -= 1;
 
+	//arrays to fill numbers
 	int arr[lineCounter];
 	int *ptr_arr[lineCounter];
 
-	fp = fopen("input.txt","r");
+	//back to the beginning of file
+	in = fopen("input.txt","r");
 
-	while (!feof(fp))
+	//read numbers and fill into array
+	while (!feof(in))
 	{
-		fscanf (fp,"%d",&arr[j]);
-		j++;
+		fscanf (in,"%d",&arr[i]);
+		i++;
 	}
 
-	for(j = 0; j < lineCounter; j++)
+	//create an array of pointers to numbers
+	for(i = 0; i < lineCounter; i++)
 	{
-		ptr_arr[j] = &arr[j];
+		ptr_arr[i] = &arr[i];
 	}
 
 	sort(ptr_arr, lineCounter);
 
-	for(j = 0; j < lineCounter; j++)
+	out = fopen("output.txt","w+");
+
+	//print sorted numbers
+	for(i = 0; i < lineCounter; i++)
 	{
 
-		printf("%d ",arr[j]);
+		fprintf(out,"%d\n",arr[i]);
 
 	}
 
+	fclose(in);
+	fclose(out);
 
 	return 0;
 }
@@ -61,7 +73,7 @@ void sort(int *arr[], int size)
 		for(i = 0; i < (size - 1); i++)
 		{
 			if(*arr[i] > *arr[i+1])
-			{ // swap elements ( bubble sorting)
+			{ // swap elements (bubble sorting)
 				temp = *arr[i];
 				*arr[i] = *arr[i+1];
 				*arr[i+1] = temp;

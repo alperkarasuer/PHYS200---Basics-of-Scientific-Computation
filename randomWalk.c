@@ -9,7 +9,7 @@ int generateRandomNumber();
 
 int main()
 {
-	assert(sodium_init >= 0);
+    assert(sodium_init >= 0);
     long stepNumber;
     printf("Enter step count for particle: ");
     scanf("%ld",&stepNumber);

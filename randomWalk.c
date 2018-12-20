@@ -30,24 +30,24 @@ int main()
 
 
         if(randomNumber == 1)
-		{
-			x+=1;
-		}
-		else if(randomNumber == 2)
+	{
+		x+=1;
+	}
+	else if(randomNumber == 2)
         {
         	y-=1;
         }
 
         else if(randomNumber == 3)
-		{
-			x-=1;
-		}
+	{
+		x-=1;
+	}
 
 
         else if(randomNumber == 4)
-		{
-			y+=1;
-		}
+	{
+		y+=1;
+	}
 
 		fprintf(fp,"%d %d\n",x,y);
 
